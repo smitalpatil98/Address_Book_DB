@@ -142,3 +142,23 @@ mysql> select * from address_book;
 | Payal      | Verma     | Rabale   | Navi Mumbai | MH    | 890577 | 8456987125 | payalvermagharat@gmail.com |
 +------------+-----------+----------+-------------+-------+--------+------------+----------------------------+
 4 rows in set (0.00 sec)
+-----------------------------------------------------------------------------------
+UC_6_Ability to Retrieve Person belonging to a City or State from the Address Book
+-----------------------------------------------------------------------------------
+mysql> SELECT * FROM address_book WHERE city = "Mumbai" OR state = "MH";
++------------+-----------+----------+-------------+-------+--------+------------+------------------------+
+| first_name | last_name | address  | city        | state | zip    | phone_no   | email_id               |
++------------+-----------+----------+-------------+-------+--------+------------+------------------------+
+| Susmit     | Patil     | Ghansoli | Navi Mumbai | MH    | 250577 | 8867754328 | susmitgharat@gmail.com |
+| Ram        | Sharma    | Thane    | Mumbai      | MH    | 698577 | 8467854328 | ramsharma@gmail.com    |
+| Sania      | Kapoor    | Airoli   | Mumbai      | MH    | 150577 | 8962554321 | saniakapoor@gmail.com  |
++------------+-----------+----------+-------------+-------+--------+------------+------------------------+
+
+mysql> SELECT * FROM address_book WHERE city = "Navi Mumbai" OR state = "Gujrat";
++------------+-----------+----------+-------------+--------+--------+------------+----------------------------+
+| first_name | last_name | address  | city        | state  | zip    | phone_no   | email_id                   |
++------------+-----------+----------+-------------+--------+--------+------------+----------------------------+
+| Susmit     | Patil     | Ghansoli | Navi Mumbai | MH     | 250577 | 8867754328 | susmitgharat@gmail.com     |
+| Payal      | Verma     | Rabale   | Navi Mumbai | Gujrat | 890577 | 8456987125 | payalvermagharat@gmail.com |
++------------+-----------+----------+-------------+--------+--------+------------+----------------------------+
+2 rows in set (0.00 sec)
