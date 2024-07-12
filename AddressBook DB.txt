@@ -197,7 +197,7 @@ mysql>  SELECT * FROM address_book WHERE city = "Mumbai" ORDER BY first_name;
 +------------+-----------+---------+--------+-------+--------+------------+-----------------------+
 2 rows in set (0.00 sec)
 ----------------------------------------------------------------------------------
-UC_9_Ability to identify each Address Book with name and Type.
+UC_9_Ability_to_identify_each_Address_Book_with_name_and_Type
 ----------------------------------------------------------------------------------
 mysql> INSERT INTO address_book (first_name,last_name,address,city,state,zip,phone_no,email_id) VALUES
     ->         ("Tushar","Jadhav","Ghatkoper","Mumbai","MH",500789,9194245632,"tushar@gmail.com"),
@@ -223,3 +223,76 @@ mysql> SELECT * FROM address_book;
 | Smithal    | Patil      | Ghansoli  | Navi Mumbai | MH     | 400225 | 9123400256 | smithal23@gmail.com        |
 +------------+------------+-----------+-------------+--------+--------+------------+----------------------------+
 9 rows in set (0.02 sec)
+
+mysql> CREATE TABLE addressbook_type (type_id VARCHAR(255) PRIMARY KEY,type_name VARCHAR(255) NOT NULL);
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> INSERT INTO addressbook_type(type_id, type_name) VALUES ('Family', 'myfamily'),('Friends','myfriends'), ('Profession','myprofession');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from addressbook_type;
++------------+--------------+
+| type_id    | type_name    |
++------------+--------------+
+| Family     | myfamily     |
+| Friends    | myfriends    |
+| Profession | myprofession |
++------------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> ALTER TABLE address_book ADD COLUMN type VARCHAR(255),ADD FOREIGN KEY (type) REFERENCES addressbook_type(type_id);
+Query OK, 9 rows affected (0.18 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
+mysql> UPDATE address_book SET type = "Profession" WHERE first_name = "Pratik";
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE address_book SET type = "Profession" WHERE first_name = "Ram";
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE address_book SET type = "Family" WHERE first_name = "Sania";
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE address_book SET type = "Family" WHERE first_name = "Tushar";
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE address_book SET type = "Family" WHERE first_name = "Sanvi";
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql>  UPDATE address_book SET type = "Family" WHERE first_name = "Sanket";
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE address_book SET type = "Friends" WHERE first_name = "Smithal";
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE address_book SET type = "Friends" WHERE first_name = "Payal";
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE address_book SET type = "Family" WHERE first_name = "Susmit";
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from address_book;
++------------+------------+-----------+-------------+--------+--------+------------+----------------------------+------------+
+| first_name | last_name  | address   | city        | state  | zip    | phone_no   | email_id                   | type       |
++------------+------------+-----------+-------------+--------+--------+------------+----------------------------+------------+
+| Susmit     | Patil      | Ghansoli  | Navi Mumbai | MH     | 250577 | 8867754328 | susmitgharat@gmail.com     | Family     |
+| Ram        | Sharma     | Thane     | Mumbai      | MH     | 698577 | 8467854328 | ramsharma@gmail.com        | Profession |
+| Sania      | Kapoor     | Airoli    | Mumbai      | MH     | 150577 | 8962554321 | saniakapoor@gmail.com      | Family     |
+| Payal      | Verma      | Rabale    | Navi Mumbai | Gujrat | 890577 | 8456987125 | payalvermagharat@gmail.com | Friends    |
+| Tushar     | Jadhav     | Ghatkoper | Mumbai      | MH     | 500789 | 9194245632 | tushar@gmail.com           | Family     |
+| Sanket     | Kalambaste | Dadar     | Mumbai      | MH     | 400456 | 9123588432 | sanketkalambaste@gmail.com | Family     |
+| Sushmita   | Pawar      | Kurla     | Mumbai      | MH     | 400042 | 8108659123 | sushmitapawar@gmail.com    | NULL       |
+| Pratik     | Sawant     | Vashi     | Navi Mumbai | MH     | 500245 | 9002565953 | pratiksawant@gmail.com     | Profession |
+| Smithal    | Patil      | Ghansoli  | Navi Mumbai | MH     | 400225 | 9123400256 | smithal23@gmail.com        | Friends    |
++------------+------------+-----------+-------------+--------+--------+------------+----------------------------+------------+
+9 rows in set (0.00 sec)
