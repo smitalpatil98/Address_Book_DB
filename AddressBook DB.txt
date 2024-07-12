@@ -93,3 +93,34 @@ mysql> select * from address_book;
 | Payal      | Verma     | Rabale       | Navi Mumbai | MH    | 890577 | 8737754328 | payalvermagharat@gmail.com |
 +------------+-----------+--------------+-------------+-------+--------+------------+----------------------------+
 5 rows in set (0.02 sec)
+
+-------------------------------------------------------------
+UC_4_Ability to edit existing contact person using their name
+-------------------------------------------------------------
+mysql> UPDATE address_book SET address = "Thane" WHERE first_name = "Ram";
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE address_book SET phone_no = "8456987125" WHERE first_name = "Payal";
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE address_book SET last_name = "Patil" WHERE first_name = "Susmit";
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE address_book SET zip = "256388" WHERE first_name = "Shamal";
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from address_book;
++------------+-----------+--------------+-------------+-------+--------+------------+----------------------------+
+| first_name | last_name | address      | city        | state | zip    | phone_no   | email_id                   |
++------------+-----------+--------------+-------------+-------+--------+------------+----------------------------+
+| Susmit     | Patil     | Ghansoli     | Navi Mumbai | MH    | 250577 | 8867754328 | susmitgharat@gmail.com     |
+| Ram        | Sharma    | Thane        | Navi Mumbai | MH    | 698577 | 8467854328 | ramsharma@gmail.com        |
+| Sania      | Kapoor    | Airoli       | Navi Mumbai | MH    | 150577 | 8962554321 | saniakapoor@gmail.com      |
+| Shamal     | Singh     | Koperkhairne | Navi Mumbai | MH    | 256388 | 8227754318 | shamalsingh@gmail.com      |
+| Payal      | Verma     | Rabale       | Navi Mumbai | MH    | 890577 | 8456987125 | payalvermagharat@gmail.com |
++------------+-----------+--------------+-------------+-------+--------+------------+----------------------------+
+5 rows in set (0.00 sec)
