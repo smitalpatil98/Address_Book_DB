@@ -296,3 +296,28 @@ mysql> select * from address_book;
 | Smithal    | Patil      | Ghansoli  | Navi Mumbai | MH     | 400225 | 9123400256 | smithal23@gmail.com        | Friends    |
 +------------+------------+-----------+-------------+--------+--------+------------+----------------------------+------------+
 9 rows in set (0.00 sec)
+
+-----------------------------------------------------------
+UC_10_Ability to get number of contact persons
+-----------------------------------------------------------
+mysql> SELECT COUNT(type) FROM address_book GROUP BY type;
++-------------+
+| COUNT(type) |
++-------------+
+|           0 |
+|           4 |
+|           2 |
+|           2 |
++-------------+
+4 rows in set (0.02 sec)
+
+mysql>  SELECT type,COUNT(type) FROM address_book GROUP BY type;
++------------+-------------+
+| type       | COUNT(type) |
++------------+-------------+
+| NULL       |           0 |
+| Family     |           4 |
+| Friends    |           2 |
+| Profession |           2 |
++------------+-------------+
+4 rows in set (0.00 sec)
