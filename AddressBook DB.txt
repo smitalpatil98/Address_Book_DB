@@ -175,3 +175,24 @@ mysql> SELECT city,state, COUNT(*) AS Address_Count FROM address_book GROUP BY c
 | Navi Mumbai | Gujrat |             1 |
 +-------------+--------+---------------+
 3 rows in set (0.01 sec)
+
+----------------------------------------------------------------------------------------
+UC_8_Ability to retrieve entries sorted alphabetically by Person’s name for a given city
+----------------------------------------------------------------------------------------
+mysql>  SELECT * FROM address_book WHERE city = "Navi Mumbai" ORDER BY first_name;
++------------+-----------+----------+-------------+--------+--------+------------+----------------------------+
+| first_name | last_name | address  | city        | state  | zip    | phone_no   | email_id                   |
++------------+-----------+----------+-------------+--------+--------+------------+----------------------------+
+| Payal      | Verma     | Rabale   | Navi Mumbai | Gujrat | 890577 | 8456987125 | payalvermagharat@gmail.com |
+| Susmit     | Patil     | Ghansoli | Navi Mumbai | MH     | 250577 | 8867754328 | susmitgharat@gmail.com     |
++------------+-----------+----------+-------------+--------+--------+------------+----------------------------+
+2 rows in set (0.00 sec)
+
+mysql>  SELECT * FROM address_book WHERE city = "Mumbai" ORDER BY first_name;
++------------+-----------+---------+--------+-------+--------+------------+-----------------------+
+| first_name | last_name | address | city   | state | zip    | phone_no   | email_id              |
++------------+-----------+---------+--------+-------+--------+------------+-----------------------+
+| Ram        | Sharma    | Thane   | Mumbai | MH    | 698577 | 8467854328 | ramsharma@gmail.com   |
+| Sania      | Kapoor    | Airoli  | Mumbai | MH    | 150577 | 8962554321 | saniakapoor@gmail.com |
++------------+-----------+---------+--------+-------+--------+------------+-----------------------+
+2 rows in set (0.00 sec)
