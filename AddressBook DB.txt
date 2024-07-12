@@ -124,3 +124,21 @@ mysql> select * from address_book;
 | Payal      | Verma     | Rabale       | Navi Mumbai | MH    | 890577 | 8456987125 | payalvermagharat@gmail.com |
 +------------+-----------+--------------+-------------+-------+--------+------------+----------------------------+
 5 rows in set (0.00 sec)
+
+-------------------------------------------------------------
+UC_5_Ability to delete a person using person's name
+-------------------------------------------------------------
+
+mysql> DELETE FROM address_book WHERE first_name = "Shamal";
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from address_book;
++------------+-----------+----------+-------------+-------+--------+------------+----------------------------+
+| first_name | last_name | address  | city        | state | zip    | phone_no   | email_id                   |
++------------+-----------+----------+-------------+-------+--------+------------+----------------------------+
+| Susmit     | Patil     | Ghansoli | Navi Mumbai | MH    | 250577 | 8867754328 | susmitgharat@gmail.com     |
+| Ram        | Sharma    | Thane    | Navi Mumbai | MH    | 698577 | 8467854328 | ramsharma@gmail.com        |
+| Sania      | Kapoor    | Airoli   | Navi Mumbai | MH    | 150577 | 8962554321 | saniakapoor@gmail.com      |
+| Payal      | Verma     | Rabale   | Navi Mumbai | MH    | 890577 | 8456987125 | payalvermagharat@gmail.com |
++------------+-----------+----------+-------------+-------+--------+------------+----------------------------+
+4 rows in set (0.00 sec)
