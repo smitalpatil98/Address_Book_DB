@@ -321,3 +321,52 @@ mysql>  SELECT type,COUNT(type) FROM address_book GROUP BY type;
 | Profession |           2 |
 +------------+-------------+
 4 rows in set (0.00 sec)
+
+-----------------------------------------------------------
+UC_11_Ability to add person to both Friend and Family
+-----------------------------------------------------------
+
+mysql> ALTER TABLE address_book ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY FIRST;
+Query OK, 0 rows affected (0.15 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM address_book;
++----+------------+------------+-----------+-------------+--------+--------+------------+----------------------------+------------+
+| id | first_name | last_name  | address   | city        | state  | zip    | phone_no   | email_id                   | type       |
++----+------------+------------+-----------+-------------+--------+--------+------------+----------------------------+------------+
+|  1 | Susmit     | Patil      | Ghansoli  | Navi Mumbai | MH     | 250577 | 8867754328 | susmitgharat@gmail.com     | Family     |
+|  2 | Ram        | Sharma     | Thane     | Mumbai      | MH     | 698577 | 8467854328 | ramsharma@gmail.com        | Profession |
+|  3 | Sania      | Kapoor     | Airoli    | Mumbai      | MH     | 150577 | 8962554321 | saniakapoor@gmail.com      | Family     |
+|  4 | Payal      | Verma      | Rabale    | Navi Mumbai | Gujrat | 890577 | 8456987125 | payalvermagharat@gmail.com | Friends    |
+|  5 | Tushar     | Jadhav     | Ghatkoper | Mumbai      | MH     | 500789 | 9194245632 | tushar@gmail.com           | Family     |
+|  6 | Sanket     | Kalambaste | Dadar     | Mumbai      | MH     | 400456 | 9123588432 | sanketkalambaste@gmail.com | Family     |
+|  7 | Sushmita   | Pawar      | Kurla     | Mumbai      | MH     | 400042 | 8108659123 | sushmitapawar@gmail.com    | NULL       |
+|  8 | Pratik     | Sawant     | Vashi     | Navi Mumbai | MH     | 500245 | 9002565953 | pratiksawant@gmail.com     | Profession |
+|  9 | Smithal    | Patil      | Ghansoli  | Navi Mumbai | MH     | 400225 | 9123400256 | smithal23@gmail.com        | Friends    |
++----+------------+------------+-----------+-------------+--------+--------+------------+----------------------------+------------+
+9 rows in set (0.00 sec)
+
+mysql> INSERT INTO address_book (first_name,last_name,address,city,state,zip,phone_no,email_id,type) VALUES ("Surya","Parekh","Bhavnagar","Surat","Gujrat",4
+00701,8667328904,"surya@gmail.com","Family");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO address_book (first_name,last_name,address,city,state,zip,phone_no,email_id,type) VALUES ("Surya","Parekh","Bhavnagar","Surat","Gujrat",400701,8667328904,"surya@gmail.com","Friends");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> Select * from address_book;
++----+------------+------------+-----------+-------------+--------+--------+------------+----------------------------+------------+
+| id | first_name | last_name  | address   | city        | state  | zip    | phone_no   | email_id                   | type       |
++----+------------+------------+-----------+-------------+--------+--------+------------+----------------------------+------------+
+|  1 | Susmit     | Patil      | Ghansoli  | Navi Mumbai | MH     | 250577 | 8867754328 | susmitgharat@gmail.com     | Family     |
+|  2 | Ram        | Sharma     | Thane     | Mumbai      | MH     | 698577 | 8467854328 | ramsharma@gmail.com        | Profession |
+|  3 | Sania      | Kapoor     | Airoli    | Mumbai      | MH     | 150577 | 8962554321 | saniakapoor@gmail.com      | Family     |
+|  4 | Payal      | Verma      | Rabale    | Navi Mumbai | Gujrat | 890577 | 8456987125 | payalvermagharat@gmail.com | Friends    |
+|  5 | Tushar     | Jadhav     | Ghatkoper | Mumbai      | MH     | 500789 | 9194245632 | tushar@gmail.com           | Family     |
+|  6 | Sanket     | Kalambaste | Dadar     | Mumbai      | MH     | 400456 | 9123588432 | sanketkalambaste@gmail.com | Family     |
+|  7 | Sushmita   | Pawar      | Kurla     | Mumbai      | MH     | 400042 | 8108659123 | sushmitapawar@gmail.com    | NULL       |
+|  8 | Pratik     | Sawant     | Vashi     | Navi Mumbai | MH     | 500245 | 9002565953 | pratiksawant@gmail.com     | Profession |
+|  9 | Smithal    | Patil      | Ghansoli  | Navi Mumbai | MH     | 400225 | 9123400256 | smithal23@gmail.com        | Friends    |
+| 10 | Surya      | Parekh     | Bhavnagar | Surat       | Gujrat | 400701 | 8667328904 | surya@gmail.com            | Family     |
+| 11 | Surya      | Parekh     | Bhavnagar | Surat       | Gujrat | 400701 | 8667328904 | surya@gmail.com            | Friends    |
++----+------------+------------+-----------+-------------+--------+--------+------------+----------------------------+------------+
+11 rows in set (0.00 sec)
