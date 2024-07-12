@@ -196,3 +196,30 @@ mysql>  SELECT * FROM address_book WHERE city = "Mumbai" ORDER BY first_name;
 | Sania      | Kapoor    | Airoli  | Mumbai | MH    | 150577 | 8962554321 | saniakapoor@gmail.com |
 +------------+-----------+---------+--------+-------+--------+------------+-----------------------+
 2 rows in set (0.00 sec)
+----------------------------------------------------------------------------------
+UC_9_Ability to identify each Address Book with name and Type.
+----------------------------------------------------------------------------------
+mysql> INSERT INTO address_book (first_name,last_name,address,city,state,zip,phone_no,email_id) VALUES
+    ->         ("Tushar","Jadhav","Ghatkoper","Mumbai","MH",500789,9194245632,"tushar@gmail.com"),
+    ->         ("Sanket","Kalambaste","Dadar","Mumbai","MH",400456,9123588432,"sanketkalambaste@gmail.com"),
+    ->          ("Sushmita","Pawar","Kurla","Mumbai","MH",400042,8108659123,"sushmitapawar@gmail.com"),
+    ->          ("Pratik","Sawant","Vashi","Navi Mumbai","MH",500245,9002565953,"pratiksawant@gmail.com"),
+    ->          ("Smithal","Patil","Ghansoli","Navi Mumbai","MH",400225,9123400256,"smithal23@gmail.com");
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM address_book;
++------------+------------+-----------+-------------+--------+--------+------------+----------------------------+
+| first_name | last_name  | address   | city        | state  | zip    | phone_no   | email_id                   |
++------------+------------+-----------+-------------+--------+--------+------------+----------------------------+
+| Susmit     | Patil      | Ghansoli  | Navi Mumbai | MH     | 250577 | 8867754328 | susmitgharat@gmail.com     |
+| Ram        | Sharma     | Thane     | Mumbai      | MH     | 698577 | 8467854328 | ramsharma@gmail.com        |
+| Sania      | Kapoor     | Airoli    | Mumbai      | MH     | 150577 | 8962554321 | saniakapoor@gmail.com      |
+| Payal      | Verma      | Rabale    | Navi Mumbai | Gujrat | 890577 | 8456987125 | payalvermagharat@gmail.com |
+| Tushar     | Jadhav     | Ghatkoper | Mumbai      | MH     | 500789 | 9194245632 | tushar@gmail.com           |
+| Sanket     | Kalambaste | Dadar     | Mumbai      | MH     | 400456 | 9123588432 | sanketkalambaste@gmail.com |
+| Sushmita   | Pawar      | Kurla     | Mumbai      | MH     | 400042 | 8108659123 | sushmitapawar@gmail.com    |
+| Pratik     | Sawant     | Vashi     | Navi Mumbai | MH     | 500245 | 9002565953 | pratiksawant@gmail.com     |
+| Smithal    | Patil      | Ghansoli  | Navi Mumbai | MH     | 400225 | 9123400256 | smithal23@gmail.com        |
++------------+------------+-----------+-------------+--------+--------+------------+----------------------------+
+9 rows in set (0.02 sec)
