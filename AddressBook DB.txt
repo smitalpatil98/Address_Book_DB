@@ -162,3 +162,16 @@ mysql> SELECT * FROM address_book WHERE city = "Navi Mumbai" OR state = "Gujrat"
 | Payal      | Verma     | Rabale   | Navi Mumbai | Gujrat | 890577 | 8456987125 | payalvermagharat@gmail.com |
 +------------+-----------+----------+-------------+--------+--------+------------+----------------------------+
 2 rows in set (0.00 sec)
+
+----------------------------------------------------------------------------------
+UC_7_Ability to understand the size of address book by City and State
+----------------------------------------------------------------------------------
+mysql> SELECT city,state, COUNT(*) AS Address_Count FROM address_book GROUP BY city,state;
++-------------+--------+---------------+
+| city        | state  | Address_Count |
++-------------+--------+---------------+
+| Navi Mumbai | MH     |             1 |
+| Mumbai      | MH     |             2 |
+| Navi Mumbai | Gujrat |             1 |
++-------------+--------+---------------+
+3 rows in set (0.01 sec)
